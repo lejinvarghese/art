@@ -1,3 +1,0 @@
-#
-
-## Concepts to Explore
