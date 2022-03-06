@@ -10,3 +10,5 @@ torch-fidelity
 einops
 wandb
 timm
+matplotlib
+opencv-python

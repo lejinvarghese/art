@@ -1,15 +1,33 @@
-# AI Generative Art
+# Generative Art
 
- `Guided Diffusion: vDisco`
+ `Guided Diffusion: Disco v5`
 
-Just art because is art.
+Just art, because art.
 
-## Activate
+## Plan
+
+1. [Diffusion](docs/disco_diffusion_v5.ipynb)
+2. [Spotify + Genius API](https://medium.com/swlh/how-to-leverage-spotify-api-genius-lyrics-for-data-science-tasks-in-python-c36cdfb55cf)
+3. [YouTube Downloader](https://www.geeksforgeeks.org/pytube-python-library-download-youtube-videos/)
+4. [Video to Image](https://stackoverflow.com/questions/33311153/python-extracting-and-saving-video-frames)
+   1. May not be necessary, animated starts maybe possible, re-evaluate
+
+
+## Concepts
+
+- [ ] Diffusion Models
+  - [ ] [Diffusion Models Beat GANs on Image Synthesis](https://arxiv.org/abs/2105.05233)
+- [ ] [Self Supervised Learning, Conditional vs Unconditional GANs](https://towardsdatascience.com/self-supervised-gans-2aec1eadaccd)
+
+
+## Appendix
+
 
 ```bash
 virtualenv --python=/usr/bin/python3.10 .venv
 source .venv/bin/activate
 
+# if you need cuda dependencies
 # wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
 # sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
 # wget https://developer.download.nvidia.com/compute/cuda/11.6.1/local_installers/cuda-repo-ubuntu2004-11-6-local_11.6.1-510.47.03-1_amd64.deb
@@ -28,11 +46,9 @@ git clone https://github.com/assafshocher/ResizeRight.git
 git clone https://github.com/CompVis/latent-diffusion.git
 git clone https://github.com/CompVis/taming-transformers
 
-pip install -e ./CLIP
-pip install -e ./guided-diffusion
-pip install -e ./taming-transformers
-pip install opencv-python
-pip install matplotlib
+pip3 install -e ./CLIP
+pip3 install -e ./guided-diffusion
+pip3 install -e ./taming-transformers
 
 mv ./CLIP ./clip
 mv ./ResizeRight ./resize_right
