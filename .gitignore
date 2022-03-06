@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+content/
+guided_diffusion/
+latent_diffusion/
+resize_right/
+taming_transformers/
+clip/
