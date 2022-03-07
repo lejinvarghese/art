@@ -11,7 +11,8 @@ import pandas as pd
 import gc
 import io
 import math
-import timm
+
+# import timm
 from IPython import display
 import lpips
 from PIL import Image, ImageOps
@@ -37,8 +38,9 @@ import random
 from ipywidgets import Output
 import hashlib
 import ipywidgets as widgets
-from taming_transformers.taming.models import vqgan
-from torchvision.datasets.utils import download_url
+
+# from taming_transformers.taming.models import vqgan
+# from torchvision.datasets.utils import download_url
 from functools import partial
 from latent_diffusion.ldm.util import instantiate_from_config
 from latent_diffusion.ldm.modules.diffusionmodules.util import (
@@ -75,6 +77,7 @@ sys.path.append(".")
 sys.path.append("./taming-transformers")
 filterwarnings("ignore")
 
+
 def create_path(file_path):
     if not (os.path.exists(file_path)):
         try:
@@ -86,18 +89,21 @@ def create_path(file_path):
     else:
         print(f"File path {file_path} exists.")
 
+
 # Variables
 model_256_downloaded = False
 model_512_downloaded = False
 model_secondary_downloaded = False
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+# device = torch.device("cpu")
 print(
     f"Using device: {device}",
 )
-
 if torch.cuda.get_device_capability(device) == (8, 0):
     print("Disabling CUDNN for A100 gpu", file=sys.stderr)
     torch.backends.cudnn.enabled = False
+
+
 cutout_debug = False
 padargs = {}
 
@@ -106,11 +112,11 @@ stop_on_next_loop = False  # Make sure GPU memory doesn't get corrupted from can
 
 # Diffusion and CLIP model settings
 ##**Models Settings:**
-diffusion_model = "512x512_diffusion_uncond_finetune_008100"  # ["256x256_diffusion_uncond", "512x512_diffusion_uncond_finetune_008100"]
-use_secondary_model = True
+diffusion_model = "256x256_diffusion_uncond"  # ["256x256_diffusion_uncond", "512x512_diffusion_uncond_finetune_008100"]
+use_secondary_model = False
 
 timestep_respacing = "50"  # ['25','50','100','150','250','500','1000','ddim25','ddim50', 'ddim75', 'ddim100','ddim150','ddim250','ddim500','ddim1000']
-diffusion_steps = 1000
+diffusion_steps = 500
 use_checkpoint = True
 ViTB32 = True
 ViTB16 = True
@@ -337,18 +343,18 @@ lpips_model = lpips.LPIPS(net="vgg").to(device)
 ##**Basic Settings:**
 batch_name = "time_to_disco"
 steps = 250  #  [25,50,100,150,250,500,1000]{type: 'raw', allow-input: true}
-width_height = [1280, 768]  # {type: 'raw'}
+width_height = [1280 // 2, 768 // 2]  # {type: 'raw'}
 clip_guidance_scale = 5000  # {type: 'number'}
 tv_scale = 0  # {type: 'number'}
 range_scale = 150  # {type: 'number'}
 sat_scale = 0  # {type: 'number'}
-cutn_batches = 4  # {type: 'number'}
+cutn_batches = 1  # {type: 'number'}
 skip_augs = False  # {type: 'boolean'}
 
 
 ##**Init Settings:**
 init_image = None  # {type: 'string'}
-init_scale = 1000  # {type: 'integer'}
+init_scale = 200  # {type: 'integer'}
 skip_steps = 0  # {type: 'integer'}
 # *Make sure you set skip_steps to ~50% of your steps if you want to use an init image.*
 
@@ -695,6 +701,7 @@ else:
 
 
 # Functions
+
 
 def fetch(url_or_path):
     if str(url_or_path).startswith("http://") or str(url_or_path).startswith(
@@ -1123,11 +1130,11 @@ def do_run():
                 for prompt in image_prompt:
                     path, weight = parse_prompt(prompt)
                     img = Image.open(fetch(path)).convert("RGB")
-                    img = TF.resize(
+                    img = ttf.resize(
                         img, min(side_x, side_y, *img.size), T.InterpolationMode.LANCZOS
                     )
                     batch = model_stat["make_cutouts"](
-                        TF.to_tensor(img).to(device).unsqueeze(0).mul(2).sub(1)
+                        ttf.to_tensor(img).to(device).unsqueeze(0).mul(2).sub(1)
                     )
                     embed = clip_model.encode_image(normalize(batch)).float()
                     if fuzzy_prompt:
@@ -1153,7 +1160,7 @@ def do_run():
         if init_image is not None:
             init = Image.open(fetch(init_image)).convert("RGB")
             init = init.resize((args.side_x, args.side_y), Image.LANCZOS)
-            init = TF.to_tensor(init).to(device).unsqueeze(0).mul(2).sub(1)
+            init = ttf.to_tensor(init).to(device).unsqueeze(0).mul(2).sub(1)
 
         if args.perlin_init:
             if args.perlin_mode == "color":
@@ -1177,10 +1184,10 @@ def do_run():
                 init2 = create_perlin_noise(
                     [1.5**-i * 0.5 for i in range(8)], 4, 4, True
                 )
-            # init = TF.to_tensor(init).add(TF.to_tensor(init2)).div(2).to(device)
+            # init = ttf.to_tensor(init).add(ttf.to_tensor(init2)).div(2).to(device)
             init = (
-                TF.to_tensor(init)
-                .add(TF.to_tensor(init2))
+                ttf.to_tensor(init)
+                .add(ttf.to_tensor(init2))
                 .div(2)
                 .to(device)
                 .unsqueeze(0)
@@ -1382,7 +1389,7 @@ def do_run():
                                     # Or else, iIf we're working with specific steps, append those
                                     else:
                                         filename = f"{args.batch_name}({args.batchNum})_{i:04}-{j:03}.png"
-                            image = TF.to_pil_image(image.add(1).div(2).clamp(0, 1))
+                            image = ttf.to_pil_image(image.add(1).div(2).clamp(0, 1))
                             if j % args.display_rate == 0 or cur_t == -1:
                                 image.save("progress.png")
                                 display.clear_output(wait=True)
@@ -1972,8 +1979,8 @@ def download_models(mode):
         # download_url(url_conf, path_conf)
         # download_url(url_ckpt, path_ckpt)
 
-        path_conf = path_conf# + "/?dl=1"  # fix it
-        path_ckpt = path_ckpt# + "/?dl=1"  # fix it
+        path_conf = path_conf  # + "/?dl=1"  # fix it
+        path_ckpt = path_ckpt  # + "/?dl=1"  # fix it
         return path_conf, path_ckpt
 
     else:
@@ -2179,7 +2186,7 @@ def convsample_ddim(
     ddim = DDIMSampler(model)
     bs = shape[0]  # dont know where this comes from but wayne
     shape = shape[1:]  # cut batch dim
-    # print(f"Sampling with eta = {eta}; steps: {steps}")
+    print(f"Sampling with eta = {eta}; steps: {steps}; batches: {bs}")
     samples, intermediates = ddim.sample(
         steps,
         batch_size=bs,
@@ -2265,6 +2272,7 @@ def make_convolutional_sample(
         t0 = time.time()
         img_cb = None
 
+        print(f"Batch size {z.shape}")
         sample, intermediates = convsample_ddim(
             model,
             c,
@@ -2479,6 +2487,9 @@ if __name__ == "__main__":
             # print(f'Using seed: {seed}')
         else:
             seed = int(set_seed)
+
+    gc.collect()
+    torch.cuda.empty_cache()
 
     args = {
         "batchNum": batchNum,

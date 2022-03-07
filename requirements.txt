@@ -4,8 +4,8 @@ black
 lpips
 datetime
 ipywidgets
-omegaconf>=2.0.0
-pytorch-lightning>=1.0.8
+omegaconf
+pytorch-lightning
 torch-fidelity
 einops
 wandb
