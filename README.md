@@ -4,6 +4,8 @@
 
 Just art, because art.
 
+![sample](./docs/sample.png)
+
 ## Plan
 
 1. [Diffusion](docs/disco_diffusion_v5.ipynb)
