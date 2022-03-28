@@ -1,0 +1,14 @@
+numpy
+pandas
+black
+lpips
+datetime
+ipywidgets
+omegaconf
+pytorch-lightning
+torch-fidelity
+einops
+wandb
+timm
+matplotlib
+opencv-python
