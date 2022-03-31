@@ -5,11 +5,12 @@
 Just art, because art.
 
 ![sample](./assets/sample.png)
+
 <!-- ![disco_girl](./assets/disco_girl.mp4)
 ![disco_heart](./assets/disco_heart.mp4) -->
 
-<video src='./assets/disco_girl.mp4' width=180/> 
-<video src='./assets/disco_heart.mp4' width=180/>
+<video src='./assets/disco_girl.mp4' width=180/> </video>
+<video src='./assets/disco_heart.mp4' width=180/></video>
 
 ## Plan
 
