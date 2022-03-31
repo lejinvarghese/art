@@ -2,11 +2,15 @@
 
 Just art, because art.
 
-![disco_girl](./assets/disco_girl.gif)
+---
 
-![disco_heart](./assets/disco_hearts.gif)
+<img src="./assets/disco_girl.gif" alt="disco_girl" width="400"/>
 
-![sample](./assets/sample.png)
+---
+
+<img src="./assets/disco_hearts.gif" alt="disco_hearts" width="400"/>
+
+---
 
 ## Concepts
 
