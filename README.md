@@ -1,13 +1,15 @@
 # Generative Art
 
- `Guided Diffusion: Disco v5`
+`Guided Diffusion: Disco v5`
 
 Just art, because art.
 
 ![sample](./assets/sample.png)
-![disco_girl](./assets/disco_girl.mp4)
-![disco_heart](./assets/disco_heart.mp4)
+<!-- ![disco_girl](./assets/disco_girl.mp4)
+![disco_heart](./assets/disco_heart.mp4) -->
 
+<video src='./assets/disco_girl.mp4' width=180/> 
+<video src='./assets/disco_heart.mp4' width=180/>
 
 ## Plan
 
@@ -15,18 +17,15 @@ Just art, because art.
 2. [Spotify + Genius API](https://medium.com/swlh/how-to-leverage-spotify-api-genius-lyrics-for-data-science-tasks-in-python-c36cdfb55cf)
 3. [YouTube Downloader](https://www.geeksforgeeks.org/pytube-python-library-download-youtube-videos/)
 4. [Video to Image](https://stackoverflow.com/questions/33311153/python-extracting-and-saving-video-frames)
-   1. May not be necessary, animated starts maybe possible, re-evaluate
-
+    1. May not be necessary, animated starts maybe possible, re-evaluate
 
 ## Concepts
 
-- [ ] Diffusion Models
-  - [ ] [Diffusion Models Beat GANs on Image Synthesis](https://arxiv.org/abs/2105.05233)
-- [ ] [Self Supervised Learning, Conditional vs Unconditional GANs](https://towardsdatascience.com/self-supervised-gans-2aec1eadaccd)
-
+-   [ ] Diffusion Models
+    -   [ ] [Diffusion Models Beat GANs on Image Synthesis](https://arxiv.org/abs/2105.05233)
+-   [ ] [Self Supervised Learning, Conditional vs Unconditional GANs](https://towardsdatascience.com/self-supervised-gans-2aec1eadaccd)
 
 ## Appendix
-
 
 ```bash
 virtualenv --python=/usr/bin/python3.10 .venv
