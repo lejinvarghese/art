@@ -4,7 +4,10 @@
 
 Just art, because art.
 
-![sample](./docs/sample.png)
+![sample](./assets/sample.png)
+![disco_girl](./assets/disco_girl.mp4)
+![disco_heart](./assets/disco_heart.mp4)
+
 
 ## Plan
 
