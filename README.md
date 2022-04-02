@@ -21,3 +21,9 @@ Just art, because art.
 -   [ ] Diffusion Models
 -   [ ] [Diffusion Models Beat GANs on Image Synthesis](https://arxiv.org/abs/2105.05233)
 -   [ ] [Self Supervised Learning, Conditional vs Unconditional GANs](https://towardsdatascience.com/self-supervised-gans-2aec1eadaccd)
+
+## Inspiration Fodder
+
+-   [Quick-Eyed Sky](https://www.youtube.com/channel/UCkYi6dzJ5emaY0tPGat3k9Q)
+
+-   [ArtificialImages](https://www.youtube.com/c/ArtificialImages)
