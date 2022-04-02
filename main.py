@@ -113,13 +113,13 @@ stop_on_next_loop = False  # Make sure GPU memory doesn't get corrupted from can
 # Diffusion and CLIP model settings
 ##**Models Settings:**
 diffusion_model = "256x256_diffusion_uncond"  # ["256x256_diffusion_uncond", "512x512_diffusion_uncond_finetune_008100"]
-use_secondary_model = False
+use_secondary_model = True
 
 timestep_respacing = "50"  # ['25','50','100','150','250','500','1000','ddim25','ddim50', 'ddim75', 'ddim100','ddim150','ddim250','ddim500','ddim1000']
 diffusion_steps = 500
 use_checkpoint = True
 ViTB32 = True
-ViTB16 = True
+ViTB16 = False
 ViTL14 = False
 RN101 = False
 RN50 = True
@@ -305,36 +305,6 @@ if RN101 is True:
     )
 
 
-# if SLIPB16:
-#     SLIPB16model = SLIP_VITB16(ssl_mlp_dim=4096, ssl_emb_dim=256)
-#     if not os.path.exists(f'{PATH_MODELS}/slip_base_100ep.pt'):
-#         subprocess.run(["wget", "https://dl.fbaipublicfiles.com/slip/slip_base_100ep.pt", "-P", PATH_MODELS])
-
-#     sd = torch.load(f'{PATH_MODELS}/slip_base_100ep.pt')
-#     real_sd = {}
-#     for k, v in sd['state_dict'].items():
-#         real_sd['.'.join(k.split('.')[1:])] = v
-#     del sd
-#     SLIPB16model.load_state_dict(real_sd)
-#     SLIPB16model.requires_grad_(False).eval().to(device)
-
-#     clip_models.append(SLIPB16model)
-
-# if SLIPL16:
-#     SLIPL16model = SLIP_VITL16(ssl_mlp_dim=4096, ssl_emb_dim=256)
-#     if not os.path.exists(f'{PATH_MODELS}/slip_large_100ep.pt'):
-
-#         subprocess.run(["wget", "https://dl.fbaipublicfiles.com/slip/slip_large_100ep.pt, "-P", PATH_MODELS])
-#     sd = torch.load(f'{PATH_MODELS}/slip_large_100ep.pt')
-#     real_sd = {}
-#     for k, v in sd['state_dict'].items():
-#         real_sd['.'.join(k.split('.')[1:])] = v
-#     del sd
-#     SLIPL16model.load_state_dict(real_sd)
-#     SLIPL16model.requires_grad_(False).eval().to(device)
-
-#     clip_models.append(SLIPL16model)
-
 normalize = T.Normalize(
     mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711]
 )
@@ -343,7 +313,7 @@ lpips_model = lpips.LPIPS(net="vgg").to(device)
 ##**Basic Settings:**
 batch_name = "time_to_disco"
 steps = 250  #  [25,50,100,150,250,500,1000]{type: 'raw', allow-input: true}
-width_height = [1280 // 2, 768 // 2]  # {type: 'raw'}
+width_height = [256, 256]  # {type: 'raw'}
 clip_guidance_scale = 5000  # {type: 'number'}
 tv_scale = 0  # {type: 'number'}
 range_scale = 150  # {type: 'number'}
