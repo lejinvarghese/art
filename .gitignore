@@ -129,11 +129,11 @@ dmypy.json
 .pyre/
 content/
 guided-diffusion/
-latent_diffusion/
+latent-diffusion/
 images_out/
 init_images/
 ResizeRight/
-taming_transformers/
+taming-transformers/
 CLIP/
 SLIP/
 cheatsheets.md

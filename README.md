@@ -2,11 +2,19 @@
 
 Just art, because art.
 
+
+## Samples
+
+<img src="./assets/output/borg_ninja_s1.png" alt="disco_girl" width="1400"/>
+
+---
+
+<img src="./assets/output/borg_ninja_s2.png" alt="disco_girl" width="1400"/>
+
 ---
 
 <img src="./assets/output/hb_s1.png" alt="disco_hearts" width="1400"/>
 
-<!-- <img src="./assets/outputs/disco_girl.gif" alt="disco_girl" width="400"/> -->
 
 ---
 
@@ -14,6 +22,7 @@ Just art, because art.
 
 ---
 
+Stay tuned for the full series.
 
 
 ## Concepts

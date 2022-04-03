@@ -25,10 +25,10 @@ git clone https://github.com/CompVis/taming-transformers
 
 # python3 setup.py install develop
 
-pip3 install -e ./clip
-pip3 install -e ./resize_right
-pip3 install -e ./guided_diffusion
-pip3 install -e ./latent_diffusion
-pip3 install -e ./taming_transformers
+pip3 install -e ./CLIP
+pip3 install -e ./ResizeRight
+pip3 install -e ./guided-diffusion
+pip3 install -e ./latent-diffusion
+pip3 install -e ./taming-transformers
 
 pip3 install --cache-dir=$TMP_DIR torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
