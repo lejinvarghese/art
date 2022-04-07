@@ -3,20 +3,20 @@
 -   [Zippy's Disco Diffusion Cheatsheet v0.2](https://docs.google.com/document/d/1l8s7uS2dGqjztYSjPpzlmXLjl5PM3IGkRWI3IiCuK7g/mobilebasic)
 
 ```text
-"A beautiful 3D matte painting about a moody, futuristic dystopian shanty village
+A beautiful 3D matte painting about a moody, futuristic dystopian shanty village
 
 surrounded by mountains and a massive tower. 
 
 Stormy clouds and rain. 
 
-Trending on artstation."
+Trending on artstation.
 ```
 
-The first part `a beautiful painting about a x` will be the focus of the image, whatever you describe there, will be the main thing in the image, in foreground-mid ground, 
+- The first part `a beautiful painting about a x` will be the focus of the image, whatever you describe there, will be the main thing in the image, in foreground-mid ground, 
 
-and the second part `surrounded by y` will be the background (secondary important). 
+-  the second part `surrounded by y` will be the background (secondary important). 
 
-Third part then `stormy clouds and rain` is setting up the weight , apparently.
+- the third part `stormy clouds and rain` is setting up the weight, apparently.
 
 
 ## Prompts
