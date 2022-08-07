@@ -28,8 +28,11 @@ sp_client = spotipy.Spotify(
 def main():
     print("Starting...")
 
-    album = "https://open.spotify.com/playlist/1PGA7tTmbEwCE5n7I1ygGS"
-    df = get_playlist_tracks(album)
+    playlist_ids = [
+        "https://open.spotify.com/playlist/3r2zTRHgnAuRxYshydsf7R",
+        "https://open.spotify.com/playlist/1PGA7tTmbEwCE5n7I1ygGS",
+    ]
+    df = get_playlist_tracks(playlist_ids[0])
     print(df.shape, df.tail())
 
     features = get_track_info(df)

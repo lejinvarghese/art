@@ -28,3 +28,21 @@ index  genres
 8   alternative rock      11
 9        modern rock      11
 ```
+
+Top 10 sub-genres in my electronic playlist:
+
+
+```sql
+index  genres
+0                edm      28
+1          pop dance      26
+2     tropical house      24
+3          dance pop      15
+4  progressive house      14
+5                pop      13
+6              house      11
+7            pop edm      11
+8      electro house      10
+9             trance       8
+
+```
