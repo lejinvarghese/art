@@ -28,7 +28,7 @@ sp_client = spotipy.Spotify(
 def main():
     print("Starting...")
 
-    album = "https://open.spotify.com/playlist/1PGA7tTmbEwCE5n7I1ygGS?si=641d4545e3a343e5"
+    album = "https://open.spotify.com/playlist/1PGA7tTmbEwCE5n7I1ygGS"
     df = get_playlist_tracks(album)
     print(df.shape, df.tail())
 
