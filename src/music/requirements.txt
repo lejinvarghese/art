@@ -7,3 +7,4 @@ seaborn
 spotipy
 python-dotenv
 bs4
+pyarrow
