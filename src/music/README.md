@@ -6,6 +6,7 @@ Explore my musical genres and deeper preferences using the Spotify API.
 python3 -m venv .venv
 source .venv/bin/activate
 pip3 install -r requirements.txt
+python3 src/music/main.py
 ```
 
 

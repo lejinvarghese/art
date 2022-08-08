@@ -32,15 +32,15 @@ class SpotifyClient:
         playlist = self.client.playlist_tracks(playlist_uri, limit)
         df = pd.DataFrame(playlist)
 
-        for _, x in df["items"].items():
+        for k, v in df["items"].items():
             t_artists, t_artist_ids = [], []
-            uri.append(x.get("track").get("uri"))
-            added_at.append(x.get("added_at"))
-            track.append(x.get("track").get("name"))
-            n_artists = len(x.get("track").get("artists"))
+            uri.append(v.get("track").get("uri"))
+            added_at.append(v.get("added_at"))
+            track.append(v.get("track").get("name"))
+            n_artists = len(v.get("track").get("artists"))
             for a in range(n_artists):
-                t_artists.append(x.get("track").get("artists")[a].get("name"))
-                t_artist_ids.append(x.get("track").get("artists")[a].get("id"))
+                t_artists.append(v.get("track").get("artists")[a].get("name"))
+                t_artist_ids.append(v.get("track").get("artists")[a].get("id"))
             artist.append(t_artists)
             artist_id.append(t_artist_ids)
 
@@ -99,15 +99,23 @@ class SpotifyClient:
 
         return features
 
-    def get_genres(self, df):
+    def get_genres(self, artists):
         genres = []
-        for artist_ids in df["artist_id"]:
+        for artist_ids in artists["artist_id"]:
             t_genres = []
             for a in artist_ids:
                 t_genres.append(self.client.artist(artist_id=a).get("genres"))
             genres.append(reduce(operator.concat, t_genres))
         print(f"Sample: {json.dumps(t_genres, indent=2)}")
-        genres = pd.DataFrame({"uri": df["uri"], "genres": genres}).explode(
-            "genres"
-        )
+        genres = pd.DataFrame(
+            {"uri": artists["uri"], "genres": genres}
+        ).explode("genres")
+        self.__genres = genres
         return genres
+
+    def get_genre_analysis(self):
+        try:
+            genre_analysis = self.__genres.value_counts().reset_index()
+        except:
+            raise Exception("No genres found, must run get_genres first")
+        return genre_analysis
