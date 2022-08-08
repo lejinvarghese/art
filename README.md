@@ -95,7 +95,7 @@ Notice the skewed nose in this one.
 Stay tuned for the full series.
 
 ## Related Work
-<img src="./src/music/assets/music_graph.png" alt="music" width="600"/>
+<img src="./src/music/assets/music_graph.png" alt="music"/>
 
 
 ## Concepts
