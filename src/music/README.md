@@ -2,11 +2,21 @@
 
 Explore my musical genres and deeper preferences using the Spotify API.
 
+Your credentials should be in a `.env` file with these variables for the file to work:
+
+```bash
+SPOTIFY_CLIENT_ID=<YOUR_SPOTIFY_CLIENT_ID>
+SPOTIFY_CLIENT_SECRET=<YOUR_SPOTIFY_CLIENT_SECRET>
+SPOTIFY_PLAYLIST_IDS=<YOUR_SPOTIFY_CLIENT_PLAYLIST_IDS_COMMA_DELIMITED>
+```
+
+
+
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip3 install -r requirements.txt
-python3 src/music/main.py
+python3 main.py
 ```
 
 
