@@ -119,3 +119,21 @@ class SpotifyClient:
         except:
             raise Exception("No genres found, must run get_genres first")
         return genre_analysis
+
+    def get_genre_graph(self):
+        # try:
+        genre_matrix = pd.get_dummies(self.__genres["genres"]).set_index(
+            self.__genres["uri"]
+        )
+        genre_cooc_matrix = genre_matrix.T.dot(genre_matrix).reset_index()
+        print(genre_cooc_matrix.head())
+        genre_graph = genre_cooc_matrix.melt(
+            value_name="weight", id_vars="index", var_name="target"
+        ).rename(columns={"index": "source"})
+        # genre_graph = genre_graph[
+        #     (genre_graph.weight > 0)
+        #     & (genre_graph.source != genre_graph.target)
+        # ]
+        # except:
+        #     raise Exception("No genres found, must run get_genres first")
+        return genre_graph

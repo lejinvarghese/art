@@ -29,6 +29,7 @@ def main():
     attributes["tracks"] = tracks
     attributes["features"] = sp_client.get_track_info(attributes.get("tracks"))
     attributes["genres"] = sp_client.get_genres(attributes.get("tracks"))
+    attributes["genre_graph"] = sp_client.get_genre_graph()
 
     for name, data in attributes.items():
         data.to_parquet(
@@ -37,6 +38,16 @@ def main():
             compression="gzip",
             index=False,
         )
+
+    # g_i = pd.concat(
+    #     [
+    #         attributes["genres"]["uri"],
+    #         pd.get_dummies(attributes["genres"]["genres"]),
+    #     ],
+    #     axis=1,
+    # )
+
+    print(attributes["genre_graph"].head())
 
     # genres = pd.read_parquet(f"{file_dir}/data/genres.parquet")
     # print(genres.head())
