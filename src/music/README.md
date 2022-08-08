@@ -22,6 +22,8 @@ python3 main.py
 
 ## Results
 
+<img src="./assets/music_graph.png" alt="music" width="600"/>
+
 Example:
 Top 10 sub-genres in my rock playlist:
 

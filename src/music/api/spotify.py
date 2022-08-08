@@ -47,7 +47,7 @@ class SpotifyClient:
         df = pd.DataFrame(
             {
                 "playlist_id": playlist_id,
-                "uri": uri,
+                "track_uri": uri,
                 "added_at": added_at,
                 "track": track,
                 "artist": artist,
@@ -68,7 +68,7 @@ class SpotifyClient:
         liveness = []
         valence = []
         tempo = []
-        for i in tracks["uri"]:
+        for i in tracks["track_uri"]:
             for x in self.client.audio_features(tracks=[i]):
                 danceability.append(x.get("danceability"))
                 energy.append(x.get("energy"))
@@ -83,7 +83,8 @@ class SpotifyClient:
         print(f"Sample: {json.dumps(x, indent=2)}")
         features = pd.DataFrame(
             {
-                "uri": tracks["uri"],
+                "playlist_id": tracks["playlist_id"],
+                "track_uri": tracks["track_uri"],
                 "danceability": danceability,
                 "energy": energy,
                 "key": key,
@@ -108,7 +109,11 @@ class SpotifyClient:
             genres.append(reduce(operator.concat, t_genres))
         print(f"Sample: {json.dumps(t_genres, indent=2)}")
         genres = pd.DataFrame(
-            {"uri": artists["uri"], "genres": genres}
+            {
+                "playlist_id": artists["playlist_id"],
+                "track_uri": artists["track_uri"],
+                "genres": genres,
+            }
         ).explode("genres")
         self.__genres = genres
         return genres
@@ -119,21 +124,3 @@ class SpotifyClient:
         except:
             raise Exception("No genres found, must run get_genres first")
         return genre_analysis
-
-    def get_genre_graph(self):
-        # try:
-        genre_matrix = pd.get_dummies(self.__genres["genres"]).set_index(
-            self.__genres["uri"]
-        )
-        genre_cooc_matrix = genre_matrix.T.dot(genre_matrix).reset_index()
-        print(genre_cooc_matrix.head())
-        genre_graph = genre_cooc_matrix.melt(
-            value_name="weight", id_vars="index", var_name="target"
-        ).rename(columns={"index": "source"})
-        # genre_graph = genre_graph[
-        #     (genre_graph.weight > 0)
-        #     & (genre_graph.source != genre_graph.target)
-        # ]
-        # except:
-        #     raise Exception("No genres found, must run get_genres first")
-        return genre_graph

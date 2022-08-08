@@ -8,3 +8,6 @@ spotipy
 python-dotenv
 bs4
 pyarrow
+pyvis
+networkx
+streamlit

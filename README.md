@@ -11,6 +11,7 @@ Just art, because art.
 
 Let this series run at high quality settings, some of them haven't reached the prescribed steps.
 
+---
 <img src="./assets/output/ukraine_0.png" alt="disco_hearts" width="1400"/>
 
 ---
@@ -92,6 +93,9 @@ Notice the skewed nose in this one.
 
 
 Stay tuned for the full series.
+
+## Related Work
+<img src="./src/music/assets/music_graph.png" alt="music" width="600"/>
 
 
 ## Concepts
