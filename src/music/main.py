@@ -71,7 +71,16 @@ class MusicGraph:
 
         node_map = self.__node_segments()
 
-        template_colors = ["red", "blue", "green"]
+        template_colors = [
+            "red",
+            "blue",
+            "green",
+            "black",
+            "yellow",
+            "orange",
+            "purple",
+            "pink",
+        ]
 
         for e in edge_data:
             src = e[0]
@@ -89,10 +98,11 @@ class MusicGraph:
         neighbor_map = graph.get_adj_list()
 
         for node in graph.nodes:
-            node["title"] += " Neighbors:<br>" + "<br>".join(
-                neighbor_map[node["id"]]
-            )
+            node["title"] = node["title"].replace("_", " ")
+            node["group"] = node_map.get(node["id"])
             node["value"] = len(neighbor_map[node["id"]])
+        graph.repulsion()
+        graph.show_buttons(filter_=["physics"])
         graph.write_html("assets/music_graph.html")
 
 
