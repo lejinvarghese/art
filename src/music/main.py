@@ -57,7 +57,7 @@ class MusicGraph:
 
     def create(self):
         graph = py_net.Network(
-            height="1000px",
+            height="512px",
             width="100%",
             notebook=False,
             heading="Music Graph",
