@@ -1,0 +1,13 @@
+numpy
+pandas
+black
+datetime
+matplotlib
+seaborn
+spotipy
+python-dotenv
+bs4
+pyarrow
+pyvis
+networkx
+streamlit
