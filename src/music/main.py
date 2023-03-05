@@ -127,10 +127,9 @@ def main():
             index=False,
         )
 
-    # genres = pd.read_parquet(f"{file_dir}/data/genres.parquet")
-
-    # genre_graph = MusicGraph(genres)
-    # genre_graph.create()
+    genres = pd.read_parquet(f"{file_dir}/data/genres.parquet")
+    genre_graph = MusicGraph(genres)
+    genre_graph.create()
 
 
 if __name__ == "__main__":
