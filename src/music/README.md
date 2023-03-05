@@ -1,7 +1,6 @@
 # Spotify API
 
-Explore my musical genres and deeper preferences using the Spotify API. This is rough and scrappy code.
-
+Explore my musical genres and deeper preferences using the Spotify API. 
 Your credentials should be in a `.env` file with these variables for the file to work:
 
 ```bash
@@ -9,7 +8,6 @@ SPOTIFY_CLIENT_ID=<YOUR_SPOTIFY_CLIENT_ID>
 SPOTIFY_CLIENT_SECRET=<YOUR_SPOTIFY_CLIENT_SECRET>
 SPOTIFY_PLAYLIST_IDS=<YOUR_SPOTIFY_CLIENT_PLAYLIST_IDS_COMMA_DELIMITED>
 ```
-
 
 ```bash
 python3 -m venv .venv
@@ -23,6 +21,7 @@ python3 main.py
 
 <img src="./assets/music_graph.png" alt="music"/>
 <img src="./assets/music_graph_zoom.png" alt="music"/>
+<img src="./assets/rock_genres_clust.png" alt="music"/>
 
 Example:
 Top 10 sub-genres in my rock playlist:
