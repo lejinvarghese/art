@@ -7,20 +7,13 @@ def scrape_lyrics(artist_name, song_name):
     Untested.
     """
     artist_name_mod = (
-        str(artist_name.replace(" ", "-"))
-        if " " in artist_name
-        else str(artist_name)
+        str(artist_name.replace(" ", "-")) if " " in artist_name else str(artist_name)
     )
     song_name_mod = (
         str(song_name.replace(" ", "-")) if " " in song_name else str(song_name)
     )
     page = requests.get(
-        "https://genius.com/"
-        + artist_name_mod
-        + "-"
-        + song_name_mod
-        + "-"
-        + "lyrics"
+        "https://genius.com/" + artist_name_mod + "-" + song_name_mod + "-" + "lyrics"
     )
     html = BeautifulSoup(page.text, "html.parser")
     lyrics1 = html.find("div", class_="lyrics")

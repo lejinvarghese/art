@@ -116,9 +116,7 @@ def main():
     for p_id in playlist_ids:
         tracks = tracks.append(sp_client.get_playlist_tracks(p_id))
     attributes["tracks"] = tracks
-    attributes["features"] = sp_client.get_track_info(
-        attributes.get("tracks")
-    )
+    attributes["features"] = sp_client.get_track_info(attributes.get("tracks"))
     attributes["genres"] = sp_client.get_genres(attributes.get("tracks"))
 
     for name, data in attributes.items():
@@ -128,7 +126,6 @@ def main():
             compression="gzip",
             index=False,
         )
-
 
     # genres = pd.read_parquet(f"{file_dir}/data/genres.parquet")
 
