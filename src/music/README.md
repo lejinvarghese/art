@@ -1,6 +1,6 @@
 # Spotify API
 
-Explore my musical genres and deeper preferences using the Spotify API.
+Explore my musical genres and deeper preferences using the Spotify API. This is rough and scrappy code.
 
 Your credentials should be in a `.env` file with these variables for the file to work:
 
@@ -9,7 +9,6 @@ SPOTIFY_CLIENT_ID=<YOUR_SPOTIFY_CLIENT_ID>
 SPOTIFY_CLIENT_SECRET=<YOUR_SPOTIFY_CLIENT_SECRET>
 SPOTIFY_PLAYLIST_IDS=<YOUR_SPOTIFY_CLIENT_PLAYLIST_IDS_COMMA_DELIMITED>
 ```
-
 
 
 ```bash

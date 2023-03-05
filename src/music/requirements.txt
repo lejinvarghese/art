@@ -11,3 +11,4 @@ pyarrow
 pyvis
 networkx
 streamlit
+jupyterlab
